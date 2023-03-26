@@ -1,0 +1,9 @@
+.navbar {
+  justify-content: flex-end;
+  /* list-style: none; */
+  /* display: flex; */
+}
+.ul-div {
+  list-style: none;
+  display: flex;
+}

@@ -1,0 +1,5 @@
+﻿<StaticWebAssets Version="1.0">
+  <ContentRoot BasePath="/" Path="D:\Optisol\Training\Sample Project 1\Proj1_WebAPI\Proj1_WebAPI\obj\Debug\net5.0\scopedcss\bundle\" />
+  <ContentRoot BasePath="_content/ProjDAL" Path="D:\Optisol\Training\Sample Project 1\Proj1_WebAPI\ProjDAL\obj\Debug\net5.0\scopedcss\projectbundle\" />
+  <ContentRoot BasePath="_content/ProjDAL" Path="D:\Optisol\Training\Sample Project 1\Proj1_WebAPI\ProjDAL\wwwroot\" />
+</StaticWebAssets>

@@ -1,0 +1,39 @@
+<br><div class="container" style="width: 500px;">
+    <form [formGroup]="loginData" (ngSubmit)="login()" novalidate>
+        <div class="form-group">
+            <label for="UserName">Email :</label>
+            <input type="mail" required pattern='^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$' class="form-control" placeholder="Email" formControlName="UserName">
+        </div>
+        <div class="alert-danger" *ngIf="loginData.controls['UserName'].invalid && loginData.controls['UserName'].touched">
+            <small *ngIf="loginData.controls['UserName'].errors?.['required']">
+                Mail ID is required
+            </small>
+            <small *ngIf="loginData.controls['UserName'].errors?.['pattern']">
+                Invalid Mail ID
+            </small>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="Password">Password :</label>
+            <input type="Password" required pattern='^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{6,12}$' class="form-control" placeholder="Password" formControlName="Password">
+        </div>
+        <div class="alert-danger" *ngIf="loginData.controls['Password'].invalid && loginData.controls['Password'].touched">
+            <small *ngIf="loginData.controls['Password'].errors?.['required']">
+                Enter the Password
+            </small>
+            <small *ngIf="loginData.controls['Password'].errors?.['pattern']">
+                Invalid Password
+            </small>
+        </div>
+        <br>
+        <div *ngIf="f">
+            <p class="alert-danger">
+                Invalid UserName or Password
+            </p>
+        </div>
+        <!-- <small *ngIf="f equals 1" class="text-danger">Invalid UserName or Password</small> -->
+        <br>
+        <button class="btn btn-primary" [disabled]="loginData.invalid">Login</button>
+    </form>
+    
+</div>

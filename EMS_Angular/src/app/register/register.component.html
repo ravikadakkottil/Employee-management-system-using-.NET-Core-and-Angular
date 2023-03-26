@@ -1,0 +1,154 @@
+<div class="container p-3" style="width: 500px;">
+    
+    <h3 style="text-align: center;">Registration :</h3><br>
+
+    <div *ngIf="success_msg">
+        <p class="alert alert-success">
+            <strong>Registration Successful </strong><a class="link" (click)="login()">Click here </a>to login
+        </p>
+    </div>
+    
+    <form [formGroup]="formData" (ngSubmit)="RegData()" novalidate>
+        <div class="form-group">
+            <label for="firstName">First Name : </label>
+            <input type="text" required minlength="3" class="form-control" placeholder="First Name" formControlName="firstName">
+        </div>
+        <div *ngIf="formData.controls['firstName'].invalid && formData.controls['firstName'].touched" class="alert-danger">
+            <small *ngIf="formData.controls['firstName'].errors?.['required']">
+                First Name required
+            </small>
+            <small *ngIf="formData.controls['firstName'].errors?.['minlength']">
+                First Name must be atleast 3 characters
+            </small>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="lastName">Last Name : </label>
+            <input type="text" required class="form-control" placeholder="Last Name" formControlName="lastName">
+        </div>
+        <div *ngIf="formData.controls['lastName'].invalid && formData.controls['lastName'].touched" class="alert-danger">
+            <small *ngIf="formData.controls['lastName'].errors?.['required']">
+                Last Name required
+            </small>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="email">Email :</label>
+            <input type="email" required pattern='^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$' class="form-control" placeholder="Email" formControlName="email">
+        </div>
+        <div *ngIf="f">
+            <p class="alert alert-danger">
+                <strong>Email Id already registered </strong>
+            </p>
+        </div>
+
+        <div class="alert-danger" *ngIf="formData.controls['email'].invalid && formData.controls['email'].touched">
+            <small *ngIf="formData.controls['email'].errors?.['required']">
+                Mail ID is required
+            </small>
+            <small *ngIf="formData.controls['email'].errors?.['pattern']">
+                Invalid Mail ID
+            </small>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="password">Password :</label>
+            <input type="password" required pattern='^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{6,12}$' class="form-control" placeholder="Password" formControlName="password">
+        </div>
+        <div class="alert-danger" *ngIf="formData.controls['password'].invalid && formData.controls['password'].touched">
+            <small *ngIf="formData.controls['password'].errors?.['required']">
+                Enter the Password
+            </small>
+            <small *ngIf="formData.controls['password'].errors?.['pattern']">
+                Invalid Password
+            </small>
+        </div><br>
+
+
+        <div class="form-group">
+            <label for="confirmPassword">Confirm Password :</label>
+            <input type="password" required pattern='^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{6,12}$' class="form-control" placeholder="Confirm Password" formControlName="confirmPassword">
+        </div>
+        <div class="alert-danger" *ngIf="formData.controls['confirmPassword'].invalid && formData.controls['confirmPassword'].touched">
+            <small *ngIf="!(formData.controls['password'].value === formData.controls['confirmPassword'].value)">
+                Password doesn't match
+            </small>
+        </div><br>
+
+        <div class="form-group">
+            <label for="address">Address : </label>
+            <input type="text" required class="form-control" placeholder="Address" formControlName="address">
+        </div>
+        <div *ngIf="formData.controls['address'].invalid && formData.controls['address'].touched" class="alert-danger">
+            <small *ngIf="formData.controls['address']  .errors?.['required']">
+                Address required
+            </small>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="role">Role : </label>
+            <select required formControlName="role" style="margin: 10px;">
+                <!-- <option>Select</option> -->
+                <option value="1">Admin</option>
+                <option value="2">Trainee</option>
+                <option value="3">Software Engineer</option>
+                <option value="4">Lead Engineer</option>
+                <option value="5">Manager</option>
+            </select>
+        </div>
+        <div *ngIf="formData.controls['role'].invalid && formData.controls['role'].touched" class="alert-danger">
+            <small *ngIf="formData.controls['role'].errors?.['required']">
+                Select the Role
+            </small>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="teamType">Team Type : </label>
+            <ul style="list-style: none;display: flex;justify-content: space-evenly;">
+                <li><input type="radio" value="1" formControlName="teamType"> BU1</li>
+                <li><input type="radio" value="2" formControlName="teamType"> BU2</li>
+                <li><input type="radio" value="3" formControlName="teamType"> BU3</li>
+            </ul>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="experience">Experience : </label>
+            <input type="number" class="form-control" placeholder="Experience" formControlName="experience">
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="dateOfJoining">Date of joining : </label>
+            <input type="date" required class="form-control" placeholder="Date of joining" formControlName="dateOfJoining">
+        </div>
+        <div *ngIf="formData.controls['dateOfJoining'].invalid && formData.controls['dateOfJoining'].touched" class="alert-danger">
+            <small *ngIf="formData.controls['dateOfJoining'].errors?.['required']">
+                Date required
+            </small>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="previousOrgName">Previous Organisation : </label>
+            <input type="text" required class="form-control" placeholder="Previous Organisation" formControlName="previousOrgName">
+        </div>
+        <div *ngIf="formData.controls['previousOrgName'].invalid && formData.controls['previousOrgName'].touched" class="alert-danger">
+            <small *ngIf="formData.controls['previousOrgName'].errors?.['required']">
+                Enter Previous Organisation
+            </small>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="currentOrgName">Current Organisation : </label>
+            <input type="text" required class="form-control" placeholder="Current Organisation" formControlName="currentOrgName">
+        </div>
+        <div *ngIf="formData.controls['currentOrgName'].invalid && formData.controls['currentOrgName'].touched" class="alert-danger">
+            <small *ngIf="formData.controls['currentOrgName'].errors?.['required']">
+                Enter Current Organisation
+            </small>
+        </div>
+        <br>
+        <button class="btn btn-primary" [disabled]="formData.invalid">Register</button>
+        
+    </form>
+    
+</div>
+
